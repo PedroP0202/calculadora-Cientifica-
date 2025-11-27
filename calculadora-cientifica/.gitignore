@@ -1,0 +1,19 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+TARGET/
+target/
+
+# Maven
+.settings/
+.project
+.classpath
+
+# Intellij
+.idea/
+*.iml
+
+# Mac
+.DS_Store
