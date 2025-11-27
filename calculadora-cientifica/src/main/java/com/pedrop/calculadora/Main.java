@@ -25,7 +25,7 @@ public class Main {
                 continue;
             }
 
-            String oper = parts[0];
+            String operador = parts[0];
             double n1, n2;
             try {
                 n1 = Double.parseDouble(parts[1]);
@@ -36,13 +36,13 @@ public class Main {
             }
 
             double res = 0;
-            if (oper.equals("add")) {
+            if (operador.equals("add")) {
                 res = calc.add(n1, n2);
-            } else if (oper.equals("sub")) {
+            } else if (operador.equals("sub")) {
                 res = calc.subtract(n1, n2);
-            } else if (oper.equals("mul")) {
+            } else if (operador.equals("mul")) {
                 res = calc.multiply(n1, n2);
-            } else if (oper.equals("div")) {
+            } else if (operador.equals("div")) {
                 try {
                     res = calc.divide(n1, n2);
                 } catch (IllegalArgumentException ex) {
@@ -50,7 +50,7 @@ public class Main {
                     continue;
                 }
             } else {
-                System.out.println("Comando nao encontrado: " + oper);
+                System.out.println("Comando nao encontrado: " + operador);
                 continue;
             }
             System.out.println(res);
