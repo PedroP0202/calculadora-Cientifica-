@@ -1,0 +1,22 @@
+@startuml
+skinparam style strict
+
+' Classe Principal (Controlador/Cliente)
+package com.pedrop.calculadora {
+    class Main {
+        + main(args: String[]): void
+    }
+
+    ' Classe de Lógica de Negócio (Serviço)
+    class Calculator {
+        + add(a: double, b: double): double
+        + subtract(a: double, b: double): double
+        + multiply(a: double, b: double): double
+        + divide(a: double, b: double): double
+    }
+
+    ' Relacionamento de Associação: Main usa Calculator
+    ' Main cria uma instância de Calculator e invoca seus métodos.
+    Main --> Calculator : usa / <<cria>>
+}
+@endumll
