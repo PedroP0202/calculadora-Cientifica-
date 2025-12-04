@@ -11,6 +11,9 @@ package com.pedrop.calculadora;
  * @version 1.0
  * @since 2023-11-29
  */
+/**
+ * Classe que implementa as operações matemáticas básicas da calculadora.
+ */
 public class Calculator {
 
     /**

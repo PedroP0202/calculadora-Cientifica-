@@ -1,7 +1,9 @@
 package com.pedrop.calculadora;
 
-// Classe simples que encapsula as operacoes disponiveis.
-// Faz a chamada à Calculator e regista no Historico.
+/**
+ * Classe que centraliza a execução das operações matemáticas e o registro no histórico.
+ * Usa Calculator para os cálculos e Historico para registrar as operações.
+ */
 public class Operacoes {
     private final Calculator calc;
     private final Historico historico;

@@ -1,22 +1,41 @@
 @startuml
 skinparam style strict
 
-' Classe Principal (Controlador/Cliente)
 package com.pedrop.calculadora {
     class Main {
         + main(args: String[]): void
     }
-
-    ' Classe de Lógica de Negócio (Serviço)
     class Calculator {
         + add(a: double, b: double): double
         + subtract(a: double, b: double): double
         + multiply(a: double, b: double): double
         + divide(a: double, b: double): double
     }
+    class Operacoes {
+        + executar(oper: String, a: double, b: double): String
+    }
+    class Historico {
+        + adicionar(linha: String): void
+        + limpar(): void
+        + toString(): String
+    }
+    class LLMSimples {
+        + processar(input: String): LLMResponse
+    }
+    class LLMInteractionEngine {
+        + sendPrompt(prompt: String): String
+    }
+    class JSONUtils {
+        + getJsonString(json: String, key: String): String
+    }
 
-    ' Relacionamento de Associação: Main usa Calculator
-    ' Main cria uma instância de Calculator e invoca seus métodos.
-    Main --> Calculator : usa / <<cria>>
+    Main --> Calculator : usa
+    Main --> Operacoes : usa
+    Main --> Historico : usa
+    Main --> LLMSimples : usa
+    LLMSimples --> LLMInteractionEngine : usa
+    LLMSimples --> JSONUtils : usa
+    Operacoes --> Calculator : usa
+    Operacoes --> Historico : registra
 }
-@endumll
+@enduml
