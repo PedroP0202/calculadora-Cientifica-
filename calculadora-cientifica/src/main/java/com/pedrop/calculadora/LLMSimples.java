@@ -12,7 +12,7 @@ public class LLMSimples {
     private LLMInteractionEngine engine;
 
     public LLMSimples(String url, String apiKey, String model) {
-        this.engine = new LLMInteractionEngine(url, apiKey, model, false);
+        this.engine = new LLMInteractionEngine(url, apiKey, model, true);
     }
 
     /**
