@@ -43,10 +43,15 @@ public class LLMSimples {
      */
     private LLMResponse processarComLLM(String input) throws Exception {
         // Prompt que pede à LLM para traduzir ou resolver
-        String prompt = "Processa o seguinte:\n" +
-                       "- Se for operação simples (ex: 2 mais 3): responde com APENAS a expressão (ex: 2 + 3)\n" +
-                       "- Se for operação complexa (ex: integral, derivada): responde com APENAS o resultado\n\n" +
-                       "Entrada: " + input;
+      String prompt = 
+    "Aja como um processador matemático. Analise a entrada do usuário e responda apenas com o resultado numérico ou a expressão matemática limpa, sem explicações ou formato especial.\n\n" +
+    "Regras:\n" +
+    "Se for aritmética básica (soma, subtração, multiplicação, divisão, potência), nao faca nada, deixa que o sistema resolva .\n" +
+    "Se for cálculo avançado (integral, derivada, equações, fatorial, conversão) ou pergunta teórica, forneça o resultado final.\n\n" +
+    "Exemplos:\n" +
+    "Entrada: 'derivada de 2x' -> '2'\n" +
+    "Entrada: 'resolva x + 2 = 0' -> 'x = -2'\n\n" +
+    "Entrada: " + input;
 
         String jsonResponse = engine.sendPrompt(prompt);
         String resultado = JSONUtils.getJsonString(jsonResponse, "text");
@@ -57,6 +62,7 @@ public class LLMSimples {
         if (resultado == null || resultado.isBlank()) {
             throw new RuntimeException("Resposta vazia da LLM");
         }
+        
 
         resultado = resultado.trim();
 

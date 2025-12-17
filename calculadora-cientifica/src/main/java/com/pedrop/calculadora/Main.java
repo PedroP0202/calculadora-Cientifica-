@@ -1,5 +1,6 @@
 package com.pedrop.calculadora;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -19,7 +20,7 @@ public class Main {
         // LLM com sua chave
         LLMSimples llm = new LLMSimples(
             "https://modelos.ai.ulusofona.pt/v1/completions",
-            "sk-L88zR6OTZ1_5PN_cdJY3ag",
+            "sk-TDYYkqfy9CTTEMzW9KjmKg",
             "gpt-4-turbo"
         );
 
@@ -62,6 +63,7 @@ public class Main {
                         op = parts[0];
                         n2 = Double.parseDouble(parts[2]);
                     }
+
                     double resultado = Double.parseDouble(ops.executar(op, n1, n2));
                     System.out.println("= " + resultado);
                     continue;
@@ -73,17 +75,10 @@ public class Main {
             // Processa com LLM
             LLMSimples.LLMResponse resposta = llm.processar(input);
             
+            // verificar se foi gerada uma  expressao
+
             if (resposta.type == LLMSimples.LLMResponse.Type.EXPRESSAO) {
-                try {
-                    String[] parts = resposta.value.split("\\s+");
-                    double n1 = Double.parseDouble(parts[0]);
-                    String op = parts[1];
-                    double n2 = Double.parseDouble(parts[2]);
-                    double resultado = Double.parseDouble(ops.executar(op, n1, n2));
-                    System.out.println("= " + resultado);
-                } catch (Exception e) {
-                    System.out.println("Erro: " + e.getMessage());
-                }
+                
             } else if (resposta.type == LLMSimples.LLMResponse.Type.RESULTADO) {
                 System.out.println("= " + resposta.value);
             } else {

@@ -3,39 +3,71 @@ skinparam style strict
 
 package com.pedrop.calculadora {
     class Main {
+        - in: Scanner
+        - historico: Historico
+        - calc: Calculator
+        - ops: Operacoes
+        - llm: LLMSimples
         + main(args: String[]): void
     }
+
     class Calculator {
         + add(a: double, b: double): double
         + subtract(a: double, b: double): double
         + multiply(a: double, b: double): double
         + divide(a: double, b: double): double
     }
+
     class Operacoes {
+        - calc: Calculator
+        - historico: Historico
+        + Operacoes(calc: Calculator, historico: Historico)
         + executar(oper: String, a: double, b: double): String
     }
+
     class Historico {
+        - itens: List<String>
         + adicionar(linha: String): void
+        + listar(): List<String>
         + limpar(): void
         + toString(): String
     }
+
     class LLMSimples {
+        - url: String
+        - apiKey: String
+        - model: String
+        + LLMSimples(url: String, apiKey: String, model: String)
         + processar(input: String): LLMResponse
     }
+
     class LLMInteractionEngine {
         + sendPrompt(prompt: String): String
     }
+
     class JSONUtils {
         + getJsonString(json: String, key: String): String
     }
 
-    Main --> Calculator : usa
-    Main --> Operacoes : usa
-    Main --> Historico : usa
-    Main --> LLMSimples : usa
+    class LLMSimples.LLMResponse {
+        + type: Type
+        + value: String
+    }
+
+    enum LLMSimples.LLMResponse.Type {
+        EXPRESSAO
+        RESULTADO
+        ERRO
+    }
+
+    Main --> Calculator : cria e usa
+    Main --> Operacoes : cria e usa
+    Main --> Historico : cria e usa
+    Main --> LLMSimples : cria e usa
     LLMSimples --> LLMInteractionEngine : usa
     LLMSimples --> JSONUtils : usa
-    Operacoes --> Calculator : usa
-    Operacoes --> Historico : registra
+    Operacoes --> Calculator : usa para cálculos
+    Operacoes --> Historico : registra operações
+    LLMSimples --> LLMSimples.LLMResponse : retorna
 }
 @enduml

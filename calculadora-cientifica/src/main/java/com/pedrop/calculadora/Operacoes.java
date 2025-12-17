@@ -20,16 +20,16 @@ public class Operacoes {
         String simbolo;
 
         // Normaliza o operador: aceita palavras e símbolos
-        if (oper.equals("+") || oper.equalsIgnoreCase("add")) {
+        if (oper.equals("+") || oper.equalsIgnoreCase("add") || oper.equalsIgnoreCase("mais")) {
             res = calc.add(a, b);
             simbolo = "+";
-        } else if (oper.equals("-") || oper.equalsIgnoreCase("sub")) {
+        } else if (oper.equals("-") || oper.equalsIgnoreCase("sub") || oper.equalsIgnoreCase("menos")) {
             res = calc.subtract(a, b);
             simbolo = "-";
-        } else if (oper.equals("*") || oper.equalsIgnoreCase("mul") || oper.equalsIgnoreCase("x")) {
+        } else if (oper.equals("*") || oper.equalsIgnoreCase("mult") || oper.equalsIgnoreCase("x") || oper.equalsIgnoreCase("vezes")) {
             res = calc.multiply(a, b);
             simbolo = "*";
-        } else if (oper.equals("/") || oper.equalsIgnoreCase("div")) {
+        } else if (oper.equals("/") || oper.equalsIgnoreCase("div") || oper.equalsIgnoreCase("dividir") || oper.equalsIgnoreCase("devidido") || oper.equalsIgnoreCase("por")) {
             try {
                 res = calc.divide(a, b);
                 simbolo = "/";

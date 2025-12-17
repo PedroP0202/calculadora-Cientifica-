@@ -4,7 +4,7 @@
 | Participantes                            | Pedro Piedade                                                                                              |
 | Funcionalidade baseada em LLM            | A LLM transforma frases do utilizador em expressões matemáticas e resolve operações mais complexas         |
 | Classes e responsabilidades              |                                                                                                            |
-|                                          | **Main**: Interface principal, orquestra tudo                                                             |
+|                                          | **Main**: Interface principal, Organiza tudo                                                             |
 |                                          | **Calculator**: Operações matemáticas básicas (+, -, *, /)                                                |
 |                                          | **Operacoes**: Centraliza execução de operações e registro no histórico                                   |
 |                                          | **Historico**: Guarda histórico das operações                                                             |
